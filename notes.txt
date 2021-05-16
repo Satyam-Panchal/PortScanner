@@ -1,0 +1,39 @@
+what do we need to do to scan any port
+1. establish the connection with the system
+    here we use socket library, socket library allows us to establish a connection over the internet.
+
+    fisrt we define a socket descripter by 
+        sock = socket.socket()
+        
+    now to connect to the target ip we will call function
+        sock.connect((ipaddress, port))
+
+        here ipaddress and port variables are already declared and given values. 
+
+        we put this in try catch block so that if the connectionis not established we can print port is closed.
+    
+    so now if the url is given in the ipaddress variable it will show that the port is closed.
+    we can find the ip of url by nslookup in teminal
+
+    we also add sock.settimeout(0.5) so that one port is only scanned for a particular interval of time
+
+2. now we will try to get ip address from the domain name
+    function named IP() in library IPy is used for this purpose.
+
+    if in the function IP() we provide any ip address it will do nothing that means it simply returns the ip address.
+
+    but is IP() is provided with any domain name it will give a ValueError.
+
+    so we will try IP(ip) for ValueError if there is any error then we will do
+        socket.gethostbyname(ip)
+    this function will convert the domain name into ip adrres andthen return it.
+
+3. now we want that our programm can accept multiple targets
+
+4. now we will find the services running on the  open ports by grabbing thr banner.
+    we need to connect to port and than recieve the information from the port and then read that information.
+
+    s.recv(bytes) this function recieve the information on the port
+    but this information is encoded so we need to decode the information by
+        banner.decode().strip('\n')
+        here strip('\n') will strip any unwanted \n\r etc
