@@ -1,0 +1,2 @@
+# PortScanner
+A very basic port scanning script/tool that can be used to scan for open ports on any given target(s). This tool accepts IP Address(s) or the Domain name(s) as the target(s) (in case of multiple targets the targets can be seperated by a ,) and also asks for the number of ports that are to be scanned. As the result the script give the details of all the open ports along with the service running on it. 
