@@ -1,7 +1,7 @@
 import socket
 from IPy import IP
 import concurrent
-import concurrent.futures
+import concurrent.futures as cf
 import termcolor
 
 def scan_targets(target, ports):                   #scan when multiple targets are given and also in case of one ip
@@ -16,7 +16,7 @@ def scan(target, ports):                           #scan when only one ip is giv
     print('\n' + termcolor.colored(('[+] Scanning target --> ' + str(target)), 'yellow'))
     
     #this code is to make the scannng fast.
-    executor = concurrent.futures.ProcessPoolExecutor(10)
+    executor = cf.ProcessPoolExecutor(10)
     futures = [executor.submit(scan_port, converted_IP, port) for port in range(1, (ports+1))]
     concurrent.futures.wait(futures)
 
